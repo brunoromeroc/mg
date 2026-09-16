@@ -38,6 +38,17 @@ from common import (
 
 RAW = "https://raw.githubusercontent.com"
 
+# Nombres de la raiz del repo que un atajo no puede pisar.
+RESERVADOS = {
+    "readme.md", "consolas.yaml", "revisions.lock.json",
+    ".gitignore", ".gitattributes", "base", "dist", "overrides", "scripts",
+}
+
+
+def atajo(consola: str) -> str:
+    """Nombre corto en la raiz del repo: el link que se tipea en la consola."""
+    return f"{consola}.json"
+
 
 def hash_contenido(datos: dict) -> str:
     """Huella del contenido IGNORANDO revisionNumber."""
@@ -107,6 +118,11 @@ def construir(consolas: dict, lock: dict, usuario: str, repo: str, branch: str) 
     novedades: list[str] = []
 
     for consola, cfg in consolas.items():
+        if atajo(consola).lower() in RESERVADOS or consola.lower() in RESERVADOS:
+            raise ErrorClaro(
+                f"El nombre de consola '{consola}' no se puede usar: chocaria con un archivo "
+                "que ya existe en el repo. Elegi otro (por ejemplo, agregandole la marca)."
+            )
         base_uri = f"{RAW}/{usuario}/{repo}/{branch}/dist/{consola}/"
         estado_consola = lock_nuevo["consolas"].setdefault(consola, {})
         lista_index = []
@@ -158,10 +174,15 @@ def construir(consolas: dict, lock: dict, usuario: str, repo: str, branch: str) 
             })
             del origen  # solo informativo
 
-        salidas[f"dist/{consola}/index.json"] = {
+        index = {
             "baseUri": base_uri,
             "platformList": lista_index,
         }
+        salidas[f"dist/{consola}/index.json"] = index
+        # Copia en la raiz con nombre corto: es la que se tipea a mano en la
+        # consola. El baseUri es absoluto, asi que las plataformas se bajan
+        # igual desde dist/ sin importar donde este el index.
+        salidas[atajo(consola)] = index
 
     return salidas, lock_nuevo, novedades
 
@@ -200,6 +221,13 @@ def validar(salidas: dict, consolas: dict) -> None:
                     f"({entrada['revisionNumber']})"
                 )
 
+        # El atajo de la raiz tiene que ser identico al index de dist/
+        clave_atajo = atajo(consola)
+        if clave_atajo not in salidas:
+            problemas.append(f"Falta generar el atajo {clave_atajo}")
+        elif salidas[clave_atajo] != index:
+            problemas.append(f"El atajo {clave_atajo} no coincide con {clave_index}")
+
     if problemas:
         raise ErrorClaro("La validacion fallo, NO se genero nada:\n  - " + "\n  - ".join(problemas))
 
@@ -228,6 +256,22 @@ def escribir(salidas: dict, lock_nuevo: dict, consolas: dict) -> list[str]:
             if f"dist/{consola}/{archivo.name}" not in salidas:
                 archivo.unlink()
                 borrados.append(f"dist/{consola}/{archivo.name}")
+
+    # Atajos de la raiz de consolas que ya no existen.
+    # Solo se borra lo que tiene pinta de atajo generado por este script:
+    # un JSON con 'baseUri' y 'platformList'. Nunca se toca otra cosa.
+    raiz = DIST_DIR.parent
+    esperados = {atajo(c) for c in consolas}
+    for archivo in sorted(raiz.glob("*.json")):
+        if archivo.name in esperados or archivo.name.lower() in RESERVADOS:
+            continue
+        try:
+            datos = json.loads(archivo.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        if isinstance(datos, dict) and "baseUri" in datos and "platformList" in datos:
+            archivo.unlink()
+            borrados.append(f"{archivo.name} (atajo de una consola eliminada)")
 
     escribir_json(LOCK_FILE, lock_nuevo)
     return borrados
@@ -263,9 +307,13 @@ def main() -> int:
         for b in borrados:
             print(f"  - {b}")
 
-    print("\nListo. Links para Daijisho:")
+    print("\nListo. Links para Daijisho (en la consola solo se tipea lo que va")
+    print("despues de 'raw.githubusercontent.com/', que Daijisho ya trae escrito):\n")
     for consola in consolas:
-        print(f"  {consolas[consola]['nombre']}: {RAW}/{usuario}/{repo}/{args.branch}/dist/{consola}/index.json")
+        cola = f"{usuario}/{repo}/{args.branch}/{atajo(consola)}"
+        print(f"  {consolas[consola]['nombre']}")
+        print(f"    {RAW}/{cola}")
+        print(f"    se tipea: {cola}   ({len(cola)} caracteres)\n")
     return 0
 
 

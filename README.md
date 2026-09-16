@@ -1,29 +1,50 @@
-# marketgamer-daijisho
+# mg — configuraciones de Daijisho para Market Gamer
 
 Configuraciones de plataformas de **Daijisho** para las consolas que vendo en
 **Market Gamer**.
 
-Cada modelo de consola tiene su propio link fijo. Se pega una sola vez en
+Cada modelo de consola tiene su propio link fijo. Se carga una sola vez en
 Daijisho y la consola se actualiza sola cuando yo publico cambios acá.
+
+> El repositorio se llama `mg` (así de corto) por un motivo: el nombre forma
+> parte del link que hay que **tipear a mano con el d-pad** en cada consola.
+> Cada letra de más es un dolor de cabeza.
 
 ---
 
 ## Links para pegar en Daijisho
 
-| Consola | Link |
-|---|---|
-| Anbernic RG DS | `https://raw.githubusercontent.com/brunoromeroc/marketgamer-daijisho/main/dist/rg-ds/index.json` |
+| Consola | Link | Lo que se tipea a mano |
+|---|---|---|
+| Anbernic RG DS | `https://raw.githubusercontent.com/brunoromeroc/mg/main/rg-ds.json` | `brunoromeroc/mg/main/rg-ds.json` |
 
-### Cómo se pega en la consola
+### Cómo se carga en la consola (sin tipear todo)
+
+Daijisho **ya viene con un link escrito** en ese campo:
+
+```
+https://raw.githubusercontent.com/TapiocaFox/Daijishou/main/platforms/index.json
+```
+
+El truco es aprovechar la primera parte, que es igual a la nuestra:
 
 1. Abrir **Daijisho** → menú (tres rayas) → **Settings**.
 2. Entrar en **Library** → **Import platforms from index**  *(en algunas
    versiones aparece como "Sync platforms" o "Index URL")*.
-3. Pegar el link de la tabla y confirmar.
-4. Elegir las plataformas a importar → **Import**.
+3. Poner el cursor **al final** del texto que ya está y mantener apretado el
+   borrar hasta que quede solamente:
+   `https://raw.githubusercontent.com/`
+4. Escribir a continuación: **`brunoromeroc/mg/main/rg-ds.json`**
+   (31 caracteres, todo en minúscula).
+5. Confirmar → elegir las plataformas → **Import**.
 
 Para actualizar más adelante: se repite el mismo paso con el mismo link.
 Daijisho compara los números de revisión y ofrece sólo lo que cambió.
+
+> **Para preparar varias consolas en serie:** conectar un teclado USB por OTG,
+> o conectar la consola a la PC por cable y mandar el texto con
+> `adb shell input text "https://raw.githubusercontent.com/brunoromeroc/mg/main/rg-ds.json"`.
+> Así no se tipea ni una vez.
 
 ---
 
@@ -34,7 +55,8 @@ Daijisho compara los números de revisión y ofrece sólo lo que cambió.
 | `consolas.yaml` | La lista de consolas y qué plataformas lleva cada una | **SÍ** |
 | `overrides/<consola>/` | Cambios propios de un modelo puntual | Sí, si hace falta |
 | `base/` | Copia de los JSON oficiales de Daijisho | No, se baja solo |
-| `dist/<consola>/` | Lo que realmente leen las consolas | **No**, se genera solo |
+| `<consola>.json` (en la raíz) | El **atajo**: el link corto que se tipea en la consola | **No**, se genera solo |
+| `dist/<consola>/` | Los archivos que Daijisho descarga después | **No**, se genera solo |
 | `revisions.lock.json` | Memoria de los números de versión | **No, nunca** |
 | `scripts/` | Los dos programas que hacen el trabajo | No |
 
@@ -71,8 +93,13 @@ Todo desde la web de GitHub, sin instalar nada:
 5. Esperar ~1 minuto. En la pestaña **Actions** se ve el proceso; cuando queda
    con un tilde verde, ya está.
 6. El link nuevo es:
-   `https://raw.githubusercontent.com/brunoromeroc/marketgamer-daijisho/main/dist/rg-35xx/index.json`
+   `https://raw.githubusercontent.com/brunoromeroc/mg/main/rg-35xx.json`
    (cambiando `rg-35xx` por el nombre corto que pusiste).
+
+> Como el nombre corto es lo que se tipea en la consola, conviene que sea
+> breve y sin ambigüedades. `rg-35xx` se tipea rápido; `anbernic-rg-35xx-h`
+> no. Tampoco puede llamarse `base`, `dist`, `scripts` ni `overrides`: el
+> generador los rechaza para no pisar carpetas del repo.
 
 > Si el nombre de una plataforma está mal escrito, el proceso falla a propósito
 > y **no publica nada roto**. En la pestaña Actions aparece en rojo, y el mensaje
