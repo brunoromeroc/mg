@@ -1,0 +1,145 @@
+{
+  "baseUri": "https://raw.githubusercontent.com/brunoromeroc/marketgamer-daijisho/main/dist/rg-ds/",
+  "platformList": [
+    {
+      "filename": "ArcadeFinalBurnNeo.json",
+      "platformName": "Arcade (FinalBurn Neo)",
+      "platformShortname": "fbneo",
+      "platformUniqueId": "fbneo",
+      "revisionNumber": 5
+    },
+    {
+      "filename": "Atari2600.json",
+      "platformName": "Atari 2600",
+      "platformShortname": "atari2600",
+      "platformUniqueId": "atari2600",
+      "revisionNumber": 11
+    },
+    {
+      "filename": "Dreamcast.json",
+      "platformName": "Dreamcast",
+      "platformShortname": "dreamcast",
+      "platformUniqueId": "dreamcast",
+      "revisionNumber": 10
+    },
+    {
+      "filename": "SegaGameGear.json",
+      "platformName": "Sega Game Gear",
+      "platformShortname": "gamegear",
+      "platformUniqueId": "gamegear",
+      "revisionNumber": 16
+    },
+    {
+      "filename": "NintendoGameBoy.json",
+      "platformName": "Nintendo - Game Boy",
+      "platformShortname": "gb",
+      "platformUniqueId": "gb",
+      "revisionNumber": 21
+    },
+    {
+      "filename": "NintendoGameBoyAdvance.json",
+      "platformName": "Nintendo - Game Boy Advance",
+      "platformShortname": "gba",
+      "platformUniqueId": "gba",
+      "revisionNumber": 19
+    },
+    {
+      "filename": "NintendoGameBoyColor.json",
+      "platformName": "Nintendo - Game Boy Color",
+      "platformShortname": "gbc",
+      "platformUniqueId": "gbc",
+      "revisionNumber": 20
+    },
+    {
+      "filename": "SegaGenesis.json",
+      "platformName": "Sega Genesis",
+      "platformShortname": "genesis",
+      "platformUniqueId": "genesis",
+      "revisionNumber": 15
+    },
+    {
+      "filename": "SegaMasterSystem.json",
+      "platformName": "Sega Master System",
+      "platformShortname": "master",
+      "platformUniqueId": "master",
+      "revisionNumber": 15
+    },
+    {
+      "filename": "Nintendo64.json",
+      "platformName": "Nintendo 64",
+      "platformShortname": "n64",
+      "platformUniqueId": "n64",
+      "revisionNumber": 16
+    },
+    {
+      "filename": "NintendoDS.json",
+      "platformName": "Nintendo DS",
+      "platformShortname": "nds",
+      "platformUniqueId": "nds",
+      "revisionNumber": 15
+    },
+    {
+      "filename": "NeoGeo.json",
+      "platformName": "Neo Geo",
+      "platformShortname": "neogeo",
+      "platformUniqueId": "neogeo",
+      "revisionNumber": 13
+    },
+    {
+      "filename": "NintendoEntertainmentSystem.json",
+      "platformName": "Nintendo Entertainment System",
+      "platformShortname": "nes",
+      "platformUniqueId": "nes",
+      "revisionNumber": 12
+    },
+    {
+      "filename": "TurboGrafx16.json",
+      "platformName": "TurboGrafx-16",
+      "platformShortname": "tg16",
+      "platformUniqueId": "tg16",
+      "revisionNumber": 11
+    },
+    {
+      "filename": "TurboGrafxCD.json",
+      "platformName": "TurboGrafx-CD",
+      "platformShortname": "tgcd",
+      "platformUniqueId": "tgcd",
+      "revisionNumber": 11
+    },
+    {
+      "filename": "SonyPlayStation.json",
+      "platformName": "Sony PlayStation",
+      "platformShortname": "psx",
+      "platformUniqueId": "psx",
+      "revisionNumber": 13
+    },
+    {
+      "filename": "PlayStationPortable.json",
+      "platformName": "PlayStation Portable",
+      "platformShortname": "psp",
+      "platformUniqueId": "psp",
+      "revisionNumber": 14
+    },
+    {
+      "filename": "SegaSaturn.json",
+      "platformName": "Sega Saturn",
+      "platformShortname": "saturn",
+      "platformUniqueId": "saturn",
+      "revisionNumber": 14
+    },
+    {
+      "filename": "SegaCD.json",
+      "platformName": "Sega CD",
+      "platformShortname": "segacd",
+      "platformUniqueId": "segacd",
+      "revisionNumber": 8
+    },
+    {
+      "filename": "SuperNintendoEntertainmentSystem.json",
+      "platformName": "Super Nintendo Entertainment System",
+      "platformShortname": "snes",
+      "platformUniqueId": "snes",
+      "revisionNumber": 13
+    }
+  ]
+}

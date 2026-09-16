@@ -1,0 +1,48 @@
+# Regenera dist/ cada vez que cambias consolas.yaml, base/, overrides/ o scripts/.
+name: Generar configuraciones
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "consolas.yaml"
+      - "base/**"
+      - "overrides/**"
+      - "scripts/**"
+      - ".github/workflows/build.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: commit-dist
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar PyYAML
+        run: pip install pyyaml
+
+      - name: Generar dist/
+        run: python scripts/build.py
+
+      - name: Commitear si hubo cambios
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dist revisions.lock.json
+          if git diff --staged --quiet; then
+            echo "Sin cambios en dist/. No hay nada para commitear."
+          else
+            git commit -m "build: regenera dist/ [skip ci]"
+            git push
+          fi

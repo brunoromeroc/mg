@@ -1,0 +1,56 @@
+# Revisa una vez por semana si Daijisho actualizo alguna plataforma oficial.
+# Lunes 9:00 de Argentina (= 12:00 UTC). Tambien se puede correr a mano desde
+# la pestaña "Actions" -> "Sincronizar con Daijisho oficial" -> "Run workflow".
+name: Sincronizar con Daijisho oficial
+
+on:
+  schedule:
+    - cron: "0 12 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: commit-dist
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar PyYAML
+        run: pip install pyyaml
+
+      - name: Bajar plataformas oficiales
+        run: python scripts/sync_official.py
+
+      - name: Regenerar dist/
+        run: python scripts/build.py
+
+      - name: Commitear solo si hubo cambios
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add base dist revisions.lock.json
+          if git diff --staged --quiet; then
+            echo "Daijisho no cambio nada esta semana."
+            exit 0
+          fi
+          CAMBIOS=$(git diff --staged --name-only -- base \
+            | sed -e 's#^base/##' -e 's#\.json$##' \
+            | paste -sd ', ' -)
+          if [ -n "$CAMBIOS" ]; then
+            MENSAJE="sync: actualiza $CAMBIOS [skip ci]"
+          else
+            MENSAJE="sync: regenera dist/ [skip ci]"
+          fi
+          echo "$MENSAJE"
+          git commit -m "$MENSAJE"
+          git push

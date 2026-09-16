@@ -1,0 +1,41 @@
+# ===========================================================================
+#  Market Gamer - Consolas y sus plataformas de Daijisho
+# ---------------------------------------------------------------------------
+#  Este es el UNICO archivo que se edita a mano.
+#
+#  Cada bloque es un modelo de consola. La "clave" (por ejemplo: rg-ds)
+#  se usa para armar el link:
+#    https://raw.githubusercontent.com/<usuario>/marketgamer-daijisho/main/dist/rg-ds/index.json
+#
+#  Reglas:
+#   - La clave va en minusculas, sin espacios ni acentos (usar guiones).
+#   - "nombre" es solo descriptivo, podes escribirlo como quieras.
+#   - Cada item de "plataformas" es el nombre del archivo JSON oficial de
+#     Daijisho, SIN el ".json" (respetando mayusculas y minusculas).
+#     Lista completa de nombres oficiales:
+#     https://github.com/TapiocaFox/Daijishou/tree/main/platforms
+# ===========================================================================
+
+rg-ds:
+  nombre: Anbernic RG DS
+  plataformas:
+    - ArcadeFinalBurnNeo
+    - Atari2600
+    - Dreamcast
+    - SegaGameGear
+    - NintendoGameBoy
+    - NintendoGameBoyAdvance
+    - NintendoGameBoyColor
+    - SegaGenesis
+    - SegaMasterSystem
+    - Nintendo64
+    - NintendoDS
+    - NeoGeo
+    - NintendoEntertainmentSystem
+    - TurboGrafx16
+    - TurboGrafxCD
+    - SonyPlayStation
+    - PlayStationPortable
+    - SegaSaturn
+    - SegaCD
+    - SuperNintendoEntertainmentSystem

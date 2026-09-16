@@ -1,0 +1,86 @@
+{
+  "consolas": {
+    "rg-ds": {
+      "ArcadeFinalBurnNeo": {
+        "hash": "3af4227d0498c873ab293de66657de2c0fd5846bc0e9b8cf45247600d69c4377",
+        "revision": 5
+      },
+      "Atari2600": {
+        "hash": "e21766cd3148769c8e576303387c057dffb6bf7ffd11103e1eb9a92559ec88e3",
+        "revision": 11
+      },
+      "Dreamcast": {
+        "hash": "d42c4b5d578a66a4b69f9e1953677a71300e0617b605d42b57cc940c3031ab44",
+        "revision": 10
+      },
+      "SegaGameGear": {
+        "hash": "847cd6274e59916f5b06009111f463585b9d017e675128263722f189e3437088",
+        "revision": 16
+      },
+      "NintendoGameBoy": {
+        "hash": "f8ef541bd90051446ce9220af588e773b22f57c77acd306ab300f20e931a2192",
+        "revision": 21
+      },
+      "NintendoGameBoyAdvance": {
+        "hash": "6d3068ad213dfc4644b5e13f85cdf554f06316e6f747d6e2cf98c96ef0319ccd",
+        "revision": 19
+      },
+      "NintendoGameBoyColor": {
+        "hash": "3e5dec2aded569c2a20f7881ae1a551c4734b0f4c2d199d9ff7647c08c19f547",
+        "revision": 20
+      },
+      "SegaGenesis": {
+        "hash": "34edc65f5ef7dcb885ad6eaeba991ae06498c764f30d9b7bea0f260a699b1b44",
+        "revision": 15
+      },
+      "SegaMasterSystem": {
+        "hash": "66999dae925383c1686df51a3a1810c8633ec76bebcbcdc72e15600d92e07a3c",
+        "revision": 15
+      },
+      "Nintendo64": {
+        "hash": "d3675249add7f8ae9e558bb340108a72dce492c4ee7a7b295099b5aea5c61e5e",
+        "revision": 16
+      },
+      "NintendoDS": {
+        "hash": "7e4d6e2b37917e7e4353f263495611fe4f338b386b6a04705c1f2977d4ef6c0f",
+        "revision": 15
+      },
+      "NeoGeo": {
+        "hash": "2b8f5e89e412a5e868534dcc8acace8a7e4772d036fa0e6c7b8a855e15da1438",
+        "revision": 13
+      },
+      "NintendoEntertainmentSystem": {
+        "hash": "c232873b88633d5155999fbb159b9c8411c53bc2566272db86bddf00242d2a3c",
+        "revision": 12
+      },
+      "TurboGrafx16": {
+        "hash": "a3ce9ff1edf7097d1a6b9813b5678b8b80a5f684377fbe887ccc16db19fc2ddf",
+        "revision": 11
+      },
+      "TurboGrafxCD": {
+        "hash": "fe499a9874142ee49f589d7d24f480e83a66c5596357e5ddb127ce64098fa481",
+        "revision": 11
+      },
+      "SonyPlayStation": {
+        "hash": "36134ab3d9a4f11c3e4c808b10e6b87d6e3b086f1e3d9d1051141b10acb9bbed",
+        "revision": 13
+      },
+      "PlayStationPortable": {
+        "hash": "fe6ad4b989682d5427ec98efd62e6aa0796b932bde4c669167ffe30c0e4e4dfc",
+        "revision": 14
+      },
+      "SegaSaturn": {
+        "hash": "46174e79a3f64cc71d16095c328241e91431a06674000dd53ad5f69f06f2038a",
+        "revision": 14
+      },
+      "SegaCD": {
+        "hash": "f8758829578a9ad50adf7aa1955a32a81625d0021082f2487efecdce78f3f0aa",
+        "revision": 8
+      },
+      "SuperNintendoEntertainmentSystem": {
+        "hash": "6692ad6893a4b2b58d9d5570495671592f7b38dfc6a24d773aa03f2e7e3ef383",
+        "revision": 13
+      }
+    }
+  }
+}
