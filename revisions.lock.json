@@ -62,16 +62,16 @@
         "revision": 11
       },
       "SonyPlayStation": {
-        "hash": "36134ab3d9a4f11c3e4c808b10e6b87d6e3b086f1e3d9d1051141b10acb9bbed",
-        "revision": 13
+        "hash": "ddfaf54e7cdab77afe96cb015dda7a7cdbd1a09df96d0ce2321d300598fb6677",
+        "revision": 14
       },
       "PlayStationPortable": {
         "hash": "fe6ad4b989682d5427ec98efd62e6aa0796b932bde4c669167ffe30c0e4e4dfc",
         "revision": 14
       },
       "SegaSaturn": {
-        "hash": "46174e79a3f64cc71d16095c328241e91431a06674000dd53ad5f69f06f2038a",
-        "revision": 14
+        "hash": "c0fa90dd2b51899c5fb97429d87ff12b7ba68dbf3a1fe005bb78a080f1a3869d",
+        "revision": 15
       },
       "SegaCD": {
         "hash": "f8758829578a9ad50adf7aa1955a32a81625d0021082f2487efecdce78f3f0aa",

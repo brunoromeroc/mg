@@ -111,7 +111,7 @@
       "platformName": "Sony PlayStation",
       "platformShortname": "psx",
       "platformUniqueId": "psx",
-      "revisionNumber": 13
+      "revisionNumber": 14
     },
     {
       "filename": "PlayStationPortable.json",
@@ -125,7 +125,7 @@
       "platformName": "Sega Saturn",
       "platformShortname": "saturn",
       "platformUniqueId": "saturn",
-      "revisionNumber": 14
+      "revisionNumber": 15
     },
     {
       "filename": "SegaCD.json",
